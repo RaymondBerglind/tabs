@@ -20,6 +20,12 @@
   "background": {
     "scripts": ["js/background.js"],
     "persistent": false
-  },
+  }, 
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["/static/js/main.8a8aa566.js"]
+    }
+  ],
   "version": "1.0"
 }

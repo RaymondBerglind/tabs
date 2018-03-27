@@ -18,3 +18,17 @@ chrome.commands.onCommand.addListener(function(command) {
   }
 );
 
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      console.log(sender.tab ?
+                  "from a content script:" + sender.tab.url :
+                  "from the extension");
+      if (request.greeting == "hello") {
+          chrome.tabs.query({}, function(tabs) {
+              console.log(tabs);
+              sendResponse({tabs});
+          })
+      }
+      return true; // Return true to indicate that this is asynchronous.
+    }
+);
