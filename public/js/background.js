@@ -25,7 +25,7 @@ chrome.runtime.onMessage.addListener(
                   "from the extension");
       if (request.greeting == "hello") {
           chrome.tabs.query({}, function(tabs) {
-              console.log(tabs);
+              console.log('Tabs: ' + tabs);
               sendResponse({tabs});
           })
       }
