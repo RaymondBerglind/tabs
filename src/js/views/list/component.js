@@ -4,7 +4,11 @@ export default function () {
     function TabListItem(tab) {
         return (
             <li key={tab.id}>
-                <button>{tab.title}</button>
+                <div className='tab-item'>
+                    <img className='tab-item-favicon' src={tab.favIconUrl} alt=''/>
+                    <span className='tab-item-title'>{tab.title}</span>
+                    <span className='tab-item-url'>{tab.url}</span>
+                </div>
             </li>
         )
     }
@@ -13,7 +17,7 @@ export default function () {
         var tabs = props.tabs;
 
         return tabs ? (
-            <ul>{tabs.map(TabListItem)}</ul>
+            <ul className='tab-list'>{tabs.map(TabListItem)}</ul>
         ) : null;
     }
 }

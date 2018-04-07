@@ -2,31 +2,29 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.App {
-  text-align: center;
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.tab-list {
+  background: rgba(51, 51, 51, 0.8);
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.tab-item.selected {
+  background: #2F80ED;
 }
 
-.App-title {
-  font-size: 1.5em;
+.tab-item-title {
+  margin-right: 5px;
+  color: #F2F2F2;
 }
 
-.App-intro {
-  font-size: large;
+.tab-item-url {
+  color: #BDBDBD;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.tab-item-favicon {
+  height: 24px;
+  width: 24px;
 }

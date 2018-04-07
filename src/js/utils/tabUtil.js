@@ -10,7 +10,7 @@ export function getAllTabs() {
 
         chrome.runtime.sendMessage({ event: 'getAllTabs' }, function (response) {
             resolve(response && response.tabs ? response.tabs : []);
-        });
+        });''
     });
 }
 
