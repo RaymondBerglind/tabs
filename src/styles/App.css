@@ -2,6 +2,11 @@
   font-family: 'Roboto', sans-serif;
 }
 
+html {
+  background: #000;
+  /* max-width: 600px; */
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -9,22 +14,35 @@ ul {
 
 .tab-list {
   background: rgba(51, 51, 51, 0.8);
+  white-space: nowrap;
 }
 
-.tab-item.selected {
+.tab-item {
+  padding-left: 1em;
+  height: 3em;
+  display: flex;
+  align-items: center;
+}
+
+.tab-item.highlighted {
   background: #2F80ED;
 }
 
 .tab-item-title {
   margin-right: 5px;
   color: #F2F2F2;
+  /* max-width: 50%; */
+  text-overflow: ellipsis;
 }
 
 .tab-item-url {
   color: #BDBDBD;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .tab-item-favicon {
   height: 24px;
   width: 24px;
+  margin-right: 1em;
 }
