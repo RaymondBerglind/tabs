@@ -20,14 +20,15 @@ chrome.commands.onCommand.addListener(function(command) {
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-      console.log(sender.tab ?
-                  'from a content script:' + sender.tab.url :
-                  'from the extension');
       if (request.event === 'getAllTabs') {
           chrome.tabs.query({}, function(tabs) {
               console.log('Tabs: ' + tabs);
               sendResponse({tabs});
-          })
+          });
+      } else if (request.event === 'selectTab') {
+          chrome.tabs.update(request.data.tabId, {active: true}, function () {
+            sendResponse();
+          });
       }
       return true; // Return true to indicate that this is asynchronous.
     }

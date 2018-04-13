@@ -10,12 +10,16 @@ export function getAllTabs() {
 
         chrome.runtime.sendMessage({ event: 'getAllTabs' }, function (response) {
             resolve(response && response.tabs ? response.tabs : []);
-        });''
+        });
     });
 }
 
 export function selectTab(tab) {
-    // TODO
+    return new Promise(function (resolve, reject) {
+        chrome.runtime.sendMessage({ event: 'selectTab', data: {tabId: tab.id }}, function (response) {
+            resolve();
+        });
+    })
 }
 
 export function searchForTabs(tabs, key) {

@@ -7,7 +7,10 @@ export default function () {
             <li>
                 <div className={'tab-item' + (props.highlighted ? ' highlighted' : '')}
                     onClick={function() {
-                        props.triggerEvent({name: 'tabWasHighlighted', data: {tab}})
+                        props.triggerEvent({name: 'tabWasSelected', data: {tab}});
+                    }}
+                    onMouseMove={function() {
+                        props.triggerEvent({name: 'tabWasHighlighted', data: {tab}});
                     }}>
                     <img className='tab-item-favicon' src={tab.favIconUrl} alt=''/>
                     <span className='tab-item-title'>{tab.title}</span>
@@ -19,11 +22,15 @@ export default function () {
 
     return function (props) {
         return props.tabs ? (
-            <ul className='tab-list'>{props.tabs.map(function(tab, index) {
-                return <TabListItem {...props}
-                                    tab={tab}
-                                    highlighted={props.highlightedTabIndex === index}
-                                    key={tab.id} />
+            <ul className='tab-list'
+                onMouseLeave={function() {
+                    props.triggerEvent({name: 'clearHighlightedTabItem'});
+                }}>
+                {props.tabs.map(function(tab, index) {
+                    return <TabListItem {...props}
+                                        tab={tab}
+                                        highlighted={props.highlightedTabIndex === index}
+                                        key={tab.id} />
             })}</ul>
         ) : null;
     }

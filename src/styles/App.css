@@ -32,6 +32,7 @@ ul {
   margin-right: 5px;
   color: #F2F2F2;
   /* max-width: 50%; */
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
