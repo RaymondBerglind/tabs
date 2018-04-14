@@ -1,5 +1,17 @@
+/* Variables */
+:root {
+  --dark-text: #BDBDBD;
+  --light-text: #F2F2F2;
+
+  --dark-background: rgba(51, 51, 51, 0.8);
+}
+
 * {
   font-family: 'Roboto', sans-serif;
+}
+
+*:focus {
+  outline: none;
 }
 
 html {
@@ -7,16 +19,42 @@ html {
   /* max-width: 600px; */
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+/* Search box */
+.search-box {
+  display: flex;
+  align-items: center;
+  
+  box-shadow: inset 0 -1px #C9C9C9;
+  background-color: var(--dark-background);
+
+  padding-left: 1em;
 }
 
+.search-box-input {
+  font-size: 1em;
+  border: none;
+  width: 100%;
+  height: 3em;
+  background-color: transparent;
+  color: var(--light-text);
+}
+
+.search-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 1em;
+}
+
+/* Tab list */
 .tab-list {
-  background: rgba(51, 51, 51, 0.8);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: var(--dark-background);
   white-space: nowrap;
 }
 
+/* Tab list item */
 .tab-item {
   padding-left: 1em;
   height: 3em;
@@ -30,14 +68,14 @@ ul {
 
 .tab-item-title {
   margin-right: 5px;
-  color: #F2F2F2;
+  color: var(--light-text);
   /* max-width: 50%; */
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .tab-item-url {
-  color: #BDBDBD;
+  color: var(--dark-text);
   text-overflow: ellipsis;
   overflow: hidden;
 }

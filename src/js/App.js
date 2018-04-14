@@ -1,10 +1,9 @@
 import React from 'react';
-import listComponentMaker from './views/list/component';
+import List from './views/list/component';
+import Search from './views/search/component';
 import * as core from './core';
 import * as tabUtil from './utils/tabUtil';
 import './../styles/App.css';
-
-const List = listComponentMaker();
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -25,8 +24,7 @@ export default class App extends React.Component {
 			} else if (keyName === 'ArrowUp') {
 				this.setState(prevState => core.setHighlightedTabIndex(prevState, core.getHighlightedTabIndex(prevState) - 1));
 			} else if (keyName === 'Enter') {
-				tabUtil.selectTab(core.getTabs(this.state)[core.getHighlightedTabIndex(this.state)]);
-				console.log('Tab was selected: ' + core.getHighlightedTabIndex(this.state));
+				this.triggerEvent({name: 'tabWasSelected', data: {tab: core.getTabs(this.state)[core.getHighlightedTabIndex(this.state)]}});
 			}
 		  }, false);
 	}
@@ -37,7 +35,7 @@ export default class App extends React.Component {
 		} else if (event.name === 'clearHighlightedTabItem') {
 			this.clearHighlightedTabItem();
 		} else if (event.name === 'tabWasSelected') {
-			// TODO
+			tabUtil.selectTab(event.data.tab);
 			console.log('Tab was selected: ' + event.data.tab.title);
 		}
 	}
@@ -62,6 +60,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
+				<Search />
 				<List
 					tabs={core.getTabs(this.state)}
 					highlightedTabIndex={core.getHighlightedTabIndex(this.state)}
