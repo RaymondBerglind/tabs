@@ -1,4 +1,5 @@
 // import * as tabUtil from './utils/tabUtil';
+import Fuse from 'fuse.js';
 
 export function createInitialState() {
     return {
@@ -32,4 +33,21 @@ export function setHighlightedTabIndex(state, value) {
 export function resetHighlightedTab(state) {
     state.userInput.highlightedTabIndex = null;
     return state;
+}
+
+export function searchAmongTabs(state, key) {
+    var options = {
+        shouldSort: true,
+        threshold: 0.6,
+        location: 0,
+        distance: 100,
+        maxPatternLength: 32,
+        minMatchCharLength: 1,
+        keys: [
+          "id",
+          "url"
+      ]
+    };
+    var fuse = new Fuse(state.tabs, options);
+    return fuse.search(key);
 }
