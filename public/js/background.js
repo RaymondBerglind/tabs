@@ -1,11 +1,11 @@
 // Fix for a chrome extension bug only occurring on macOS (https://bugs.chromium.org/p/chromium/issues/detail?id=428044#c13).
-if (window.navigator.userAgent.indexOf("Mac" != -1)) {
-    document.body.style.opacity = 0;
-    document.body.style.transition = 'opacity ease-out .4s';
-    requestAnimationFrame(function() {
-      document.body.style.opacity = 1;
-    });
-}
+// if (window.navigator.userAgent.indexOf("Mac" != -1)) {
+//     document.body.style.opacity = 0;
+//     document.body.style.transition = 'opacity ease-out .4s';
+//     requestAnimationFrame(function() {
+//       document.body.style.opacity = 1;
+//     });
+// }
 
 chrome.commands.onCommand.addListener(function(command) {
     // chrome.tabs.query({currentWindow: true}, function(tabs) {

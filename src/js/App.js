@@ -24,22 +24,11 @@ export default class App extends React.Component {
 			} else if (keyName === 'ArrowUp') {
 				this.setState(prevState => core.setHighlightedTabIndex(prevState, core.getHighlightedTabIndex(prevState) - 1));
 			} else if (keyName === 'Enter') {
-				this.triggerEvent({name: 'tabWasSelected', data: {tab: core.getTabs(this.state)[core.getHighlightedTabIndex(this.state)]}});
+				this.triggerEvent({name: 'tabWasSelected', data: {tab: core.getTabsToDisplay(this.state)[core.getHighlightedTabIndex(this.state)]}});
 			}
 		  }, false);
 	}
 
-	triggerEvent(event) {
-		if (event.name === 'tabWasHighlighted') {
-			this.highlightTabItem(this.state, event.data.tab);
-		} else if (event.name === 'clearHighlightedTabItem') {
-			this.clearHighlightedTabItem();
-		} else if (event.name === 'tabWasSelected') {
-			tabUtil.selectTab(event.data.tab);
-			console.log('Tab was selected: ' + event.data.tab.title);
-		}
-	}
-	
 	clearHighlightedTabItem() {
 		this.setState(prevState => core.resetHighlightedTab(prevState));
 	}
@@ -53,16 +42,31 @@ export default class App extends React.Component {
 		const thisComponent = this;
 		tabUtil.getAllTabs().then(
 			function(tabs) {
-				thisComponent.setState(prevState => core.setTabs(prevState, tabs));
+				thisComponent.setState(prevState => core.receiveTabs(prevState, tabs));
 		});
 	}
 
+	triggerEvent(event) {
+		if (event.name === 'searchInputWasChanged') {
+			this.setState(prevState => core.receiveSearchInput(prevState, event.data.searchInput));
+		} else if (event.name === 'tabWasHighlighted') {
+			this.highlightTabItem(this.state, event.data.tab);
+		} else if (event.name === 'clearHighlightedTabItem') {
+			this.clearHighlightedTabItem();
+		} else if (event.name === 'tabWasSelected') {
+			if (event.data.tab) {
+				tabUtil.selectTab(event.data.tab);
+				console.log('Tab was selected: ' + event.data.tab.title);
+			}
+		}
+	}
 	render() {
 		return (
 			<div className="App">
-				<Search />
+				<Search
+					triggerEvent={this.triggerEvent} />
 				<List
-					tabs={core.getTabs(this.state)}
+					tabs={core.getTabsToDisplay(this.state)}
 					highlightedTabIndex={core.getHighlightedTabIndex(this.state)}
 					triggerEvent={this.triggerEvent} />
 			</div>

@@ -4,6 +4,7 @@ import TabListItem from '../tabItem/component';
 export default function (props) {
     return props.tabs ? (
         <ul className='tab-list'
+            style={{pointerEvents: 'none'}}
             onMouseLeave={function() {
                 props.triggerEvent({name: 'clearHighlightedTabItem'});
             }}>

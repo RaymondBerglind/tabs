@@ -15,8 +15,13 @@
 }
 
 html {
+  font-size: 20px;
+}
+
+body {
   background: #000;
-  /* max-width: 600px; */
+  width: 600px;
+  max-height: 300px;
 }
 
 /* Search box */
@@ -28,6 +33,10 @@ html {
   background-color: var(--dark-background);
 
   padding-left: 1em;
+}
+
+.search-box::placeholder {
+  color: var(--dark-text);
 }
 
 .search-box-input {
@@ -52,6 +61,7 @@ html {
   margin: 0;
   background-color: var(--dark-background);
   white-space: nowrap;
+  max-height: 350px;
 }
 
 /* Tab list item */
