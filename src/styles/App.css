@@ -49,8 +49,8 @@ body {
 }
 
 .search-icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   margin-right: 1em;
 }
 
@@ -79,7 +79,7 @@ body {
 .tab-item-title {
   margin-right: 5px;
   color: var(--light-text);
-  /* max-width: 50%; */
+  min-width: 3em;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -91,6 +91,8 @@ body {
 }
 
 .tab-item-favicon {
+  display: inline-block;
+  
   height: 24px;
   width: 24px;
   margin-right: 1em;
