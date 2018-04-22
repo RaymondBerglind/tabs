@@ -2,7 +2,7 @@ import React from 'react';
 import List from './views/list/component';
 import Search from './views/search/component';
 import * as core from './core';
-import * as tabUtil from './utils/tabUtil';
+import * as chromeUtil from './utils/chromeUtil';
 import './../styles/App.css';
 
 export default class App extends React.Component {
@@ -13,6 +13,7 @@ export default class App extends React.Component {
 		this.triggerEvent = this.triggerEvent.bind(this);
 		this.addKeyListeners();
 		this.fetchTabs();
+		this.fetchCurrentWindow();
 	}
 
 	addKeyListeners() {
@@ -40,10 +41,19 @@ export default class App extends React.Component {
 
 	fetchTabs() {
 		const thisComponent = this;
-		tabUtil.getAllTabs().then(
+		chromeUtil.getAllTabs().then(
 			function(tabs) {
 				thisComponent.setState(prevState => core.receiveTabs(prevState, tabs));
 		});
+	}
+
+	fetchCurrentWindow() {
+		const thisComponent = this;
+		chromeUtil.getCurrentWindow().then(
+			function(window) {
+				thisComponent.setState(prevState => core.receiveWindowData(prevState, window));
+			}
+		)
 	}
 
 	triggerEvent(event) {
@@ -55,7 +65,7 @@ export default class App extends React.Component {
 			this.clearHighlightedTabItem();
 		} else if (event.name === 'tabWasSelected') {
 			if (event.data.tab) {
-				tabUtil.selectTab(event.data.tab);
+				chromeUtil.selectTab(event.data.tab);
 				console.log('Tab was selected: ' + event.data.tab.title);
 			}
 		}

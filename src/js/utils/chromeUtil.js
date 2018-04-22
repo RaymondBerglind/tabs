@@ -16,12 +16,16 @@ export function getAllTabs() {
 
 export function selectTab(tab) {
     return new Promise(function (resolve, reject) {
-        chrome.runtime.sendMessage({ event: 'selectTab', data: {tabId: tab.id }}, function (response) {
+        chrome.runtime.sendMessage({event: 'selectTab', data: {tabId: tab.id}}, function (response) {
             resolve();
         });
     })
 }
 
-export function searchForTabs(tabs, key) {
-    // TODO
+export function getCurrentWindow() {
+    return new Promise(function (resolve, reject) {
+        chrome.runtime.sendMessage({event: 'getCurrentWindow'}, function (response) {
+            resolve(response ? response.window : {});
+        })
+    });
 }

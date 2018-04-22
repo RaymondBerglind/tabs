@@ -38,6 +38,10 @@ chrome.runtime.onMessage.addListener(
           chrome.tabs.update(request.data.tabId, {active: true}, function () {
             sendResponse();
           });
+      } else if (request.event === 'getCurrentWindow') {
+          chrome.windows.getCurrent({}, function(window) {
+            sendResponse({window});
+          })
       }
       return true; // Return true to indicate that this is asynchronous.
     }

@@ -5,6 +5,7 @@ export function createInitialState() {
     return {
         tabs: [],
         tabsToDisplay: [],
+        currentWindow: null,
         userInput: {
             highlightedTabIndex: 0,
             searchKey: ''
@@ -23,7 +24,11 @@ export function getTabs(state) {
 }
 
 export function getTabsToDisplay(state) {
-    return state.userInput.searchKey === '' ? [] : state.tabsToDisplay;
+    if (state.userInput.searchKey === '' || !state.currentWindow) {
+        return [];
+    }
+
+    return state.tabsToDisplay.filter((tab) => tab.windowId === state.currentWindow.id);
 }
 
 export function getHighlightedTabIndex(state) {
@@ -39,6 +44,11 @@ export function setHighlightedTabIndex(state, value) {
 
 export function resetHighlightedTab(state) {
     state.userInput.highlightedTabIndex = null;
+    return state;
+}
+
+export function receiveWindowData(state, value) {
+    state.currentWindow = value;
     return state;
 }
 
