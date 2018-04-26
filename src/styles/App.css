@@ -61,7 +61,8 @@ body {
   margin: 0;
   background-color: var(--dark-background);
   white-space: nowrap;
-  max-height: 350px;
+  max-height: 250px;
+  overflow: auto;
 }
 
 /* Tab list item */
@@ -92,6 +93,7 @@ body {
 
 .tab-item-favicon {
   display: inline-block;
+  flex-shrink: 0;
   
   height: 24px;
   width: 24px;

@@ -61,7 +61,8 @@ export function setSearchKey(state, value) {
     return state;
 }
 
-export function searchAmongTabs(state, searchKey) {
+export function searchAmongTabs(state, value) {
+    var searchKey = value.trim();
     if (searchKey === '') {
         return state.tabs;
     }
