@@ -35,7 +35,7 @@ export default class App extends React.Component {
 	}
 
 	highlightTabItem(state, tab) {
-		var tabIndex = core.getTabs(state).indexOf(tab);
+		var tabIndex = core.getTabsToDisplay(state).indexOf(tab);
 		this.setState(prevState => core.setHighlightedTabIndex(prevState, tabIndex));
 	}
 
@@ -60,13 +60,13 @@ export default class App extends React.Component {
 		if (event.name === 'searchInputWasChanged') {
 			this.setState(prevState => core.receiveSearchInput(prevState, event.data.searchInput));
 		} else if (event.name === 'tabWasHighlighted') {
+			console.log('Tab was highlighted');
 			this.highlightTabItem(this.state, event.data.tab);
 		} else if (event.name === 'clearHighlightedTabItem') {
 			this.clearHighlightedTabItem();
 		} else if (event.name === 'tabWasSelected') {
 			if (event.data.tab) {
 				chromeUtil.selectTab(event.data.tab);
-				console.log('Tab was selected: ' + event.data.tab.title);
 			}
 		}
 	}
