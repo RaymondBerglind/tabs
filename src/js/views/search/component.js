@@ -6,6 +6,7 @@ export default function (props) {
         <div className='search-box'>
             <img src={searchIcon} alt='' className='search-icon' />
             <input
+                autoFocus
                 type='text'
                 className='search-box-input'
                 placeholder='Search for tabs…'
