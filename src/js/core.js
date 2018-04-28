@@ -64,14 +64,14 @@ export function setSearchKey(state, value) {
 export function searchAmongTabs(state, value) {
     var searchKey = value.trim();
     if (searchKey === '') {
-        return state.tabs;
+        return [];
     }
 
     var options = {
         shouldSort: true,
         threshold: 0.4,
         location: 0,
-        distance: 200,
+        distance: 300,
         maxPatternLength: 32,
         minMatchCharLength: 1,
         keys: [{
