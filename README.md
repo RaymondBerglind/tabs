@@ -3,7 +3,7 @@
 A Spotlight-like tab manager extension for Google Chrome, built with ReactJS.
 
 ## Quickly search and select among open tabs
-Just hit ctrl/cmd+space to launch the extension.
+Just hit ctrl+space to launch the extension.
 ![Demo for the tabs extension](./public/Assets/tabs_demo.gif)
 
 

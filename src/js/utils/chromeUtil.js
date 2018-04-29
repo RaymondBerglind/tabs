@@ -1,5 +1,4 @@
 /*global chrome*/
-// import * as mockUtil from '../mocks/mockUtil';
 
 export function getAllTabs() {
     return new Promise(function (resolve, reject) {

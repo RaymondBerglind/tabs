@@ -2,7 +2,6 @@ chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
       if (request.event === 'getAllTabs') {
           chrome.tabs.query({}, function(tabs) {
-              console.log('Tabs: ' + tabs);
               sendResponse({tabs});
           });
       } else if (request.event === 'selectTab') {

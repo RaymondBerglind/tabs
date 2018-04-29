@@ -1,3 +1,4 @@
+// Development mocks.
 export function getAllTabsMock() {
     var tabMock = [{
         active: false,
