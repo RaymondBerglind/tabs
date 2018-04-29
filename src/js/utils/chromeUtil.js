@@ -1,13 +1,8 @@
 /*global chrome*/
-import tabMock from '../mocks/tabMock';
+// import * as mockUtil from '../mocks/mockUtil';
 
 export function getAllTabs() {
     return new Promise(function (resolve, reject) {
-        // TODO: Error handling
-        if (process.env.NODE_ENV === 'development') {
-            resolve(tabMock());
-        }
-
         chrome.runtime.sendMessage({ event: 'getAllTabs' }, function (response) {
             resolve(response && response.tabs ? response.tabs : []);
         });

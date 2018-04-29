@@ -9,6 +9,5 @@ Just hit ctrl/cmd+space to launch the extension.
 
 ## Acknowledgements
 - Thanks to [fuse.js](http://fusejs.io/) for the fuzzy search library.
-- Search icon provided by [Google Material Design](https://material.io/).
+- Icons provided by [Google Material Design](https://material.io/).
 - Project bootstrapped with [create-react-app](https://github.com/facebook/create-react-app).
-
