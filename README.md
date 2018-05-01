@@ -1,6 +1,6 @@
 ![Logo for the tabs extension](./public/Assets/logo.svg)
 
-A Spotlight-like tab manager extension for Google Chrome, built with ReactJS.
+A Spotlight-like tab manager extension for Google Chrome, built with ReactJS. Download the published version on the [Chrome Web Store](https://chrome.google.com/webstore/detail/tabs/bjfpnbiiohflnegaikcfjddjeknobdhp).
 
 ## Quickly search and select among open tabs
 Just hit *ctrl+space* to launch the extension.
