@@ -1,4 +1,3 @@
-// import * as tabUtil from './utils/tabUtil';
 import Fuse from 'fuse.js';
 
 export function createInitialState() {
@@ -95,9 +94,7 @@ export function searchKeyMatchesTopResult(state) {
 }
 
 export function receiveSearchInput(state, searchInput) {
-    // TODO: remove?
     state.userInput.searchKey = searchInput;
-
     state.tabsToDisplay = searchAmongTabs(state, state.userInput.searchKey);
     return state;
 }

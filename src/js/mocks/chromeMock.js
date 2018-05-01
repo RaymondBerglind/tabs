@@ -1,5 +1,6 @@
 // Development mocks.
-export function getAllTabsMock() {
+const windowId = 'The window ID'
+export function getAllTabs() {
     var tabMock = [{
         active: false,
         audible: false,
@@ -20,7 +21,7 @@ export function getAllTabsMock() {
         title: "Netflix",
         url: "https://www.netflix.com/browse",
         width: 1680,
-        windowId: 22
+        windowId: windowId
     }, {
         active: true,
         audible: false,
@@ -41,7 +42,7 @@ export function getAllTabsMock() {
         title: "Black Mirror - Rotten Tomatoes",
         url: "https://www.rottentomatoes.com/tv/black_mirror",
         width: 950,
-        windowId: 22
+        windowId: windowId
     }, {
         active: false,
         audible: false,
@@ -62,7 +63,7 @@ export function getAllTabsMock() {
         title: "Facebook",
         url: "https://www.facebook.com/",
         width: 1680,
-        windowId: 22
+        windowId: windowId
     }, {
         active: false,
         audible: false,
@@ -83,7 +84,7 @@ export function getAllTabsMock() {
         title: "YouTube",
         url: "https://www.youtube.com/",
         width: 1680,
-        windowId: 22
+        windowId: windowId
     }, {
         active: false,
         audible: false,
@@ -104,7 +105,7 @@ export function getAllTabsMock() {
         title: "Hampus Gunnarsson",
         url: "https://www.facebook.com/bjorn.h.gunnarsson",
         width: 1680,
-        windowId: 22
+        windowId: windowId
     }];
 
     return new Promise(function (resolve, reject) {
@@ -112,16 +113,16 @@ export function getAllTabsMock() {
     });
 }
 
-export function selectTabMock({tab}) {
+export function selectTab({tab}) {
     return new Promise(function (resolve, reject) {
         console.log("Tab selected:" + tab.title);
         resolve();
     });
 }
 
-export function getCurrentWindowMock() {
+export function getCurrentWindow() {
     return new Promise(function (resolve, reject) {
-        console.log("Got current window");
-        resolve();
+        console.log("Got the current window");
+        resolve({id: windowId});
     });
 }
