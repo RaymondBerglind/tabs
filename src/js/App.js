@@ -12,7 +12,10 @@ export default class App extends React.Component {
 		this.fetchTabs = this.fetchTabs.bind(this);
 		this.triggerEvent = this.triggerEvent.bind(this);
 		this.addKeyListeners();
+<<<<<<< HEAD
 		this.fetchTabs();
+=======
+>>>>>>> 473fb1fd168475d6eaee09e5f69949147c4ba1e5
 	}
 
 	addKeyListeners() {
@@ -64,7 +67,16 @@ export default class App extends React.Component {
 			}
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+
+	componentDidMount() {
+		this.fetchTabs();
+		this.fetchCurrentWindow();
+	}
+
+>>>>>>> 473fb1fd168475d6eaee09e5f69949147c4ba1e5
 	render() {
 		return (
 			<div className="App">
