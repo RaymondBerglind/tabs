@@ -16,10 +16,10 @@ export function selectTab(tab) {
     })
 }
 
-export function getCurrentWindow() {
+export function focusOnWindow(windowId) {
     return new Promise(function (resolve, reject) {
-        chrome.runtime.sendMessage({event: 'getCurrentWindow'}, function (response) {
-            resolve(response ? response.window : {});
-        })
-    });
+        chrome.runtime.sendMessage({event: 'focusOnWindow', data: {windowId}}, function (response) {
+            resolve();
+        });
+    })
 }

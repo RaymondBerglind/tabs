@@ -13,7 +13,6 @@ export default class App extends React.Component {
 		this.triggerEvent = this.triggerEvent.bind(this);
 		this.addKeyListeners();
 		this.fetchTabs();
-		this.fetchCurrentWindow();
 	}
 
 	addKeyListeners() {
@@ -47,15 +46,6 @@ export default class App extends React.Component {
 		});
 	}
 
-	fetchCurrentWindow() {
-		const thisComponent = this;
-		chromeUtil.getCurrentWindow().then(
-			function(window) {
-				thisComponent.setState(prevState => core.receiveWindowData(prevState, window));
-			}
-		)
-	}
-
 	triggerEvent(event) {
 		if (event.name === 'searchInputWasChanged') {
 			this.setState(prevState => core.receiveSearchInput(prevState, event.data.searchInput));
@@ -66,10 +56,15 @@ export default class App extends React.Component {
 			this.clearHighlightedTabItem();
 		} else if (event.name === 'tabWasSelected') {
 			if (event.data.tab) {
-				chromeUtil.selectTab(event.data.tab);
+				chromeUtil.selectTab(event.data.tab).then(
+					function() {
+						chromeUtil.focusOnWindow(event.data.tab.windowId);
+					}
+				)
 			}
 		}
 	}
+	
 	render() {
 		return (
 			<div className="App">
