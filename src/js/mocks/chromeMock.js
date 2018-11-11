@@ -48,7 +48,7 @@ export function getAllTabs() {
         audible: false,
         autoDiscardable: true,
         discarded: false,
-        favIconUrl: "https://static.xx.fbcdn.net/rsrc.php/yl/r/H3nktOa7ZMg.ico",
+        favIconUrl: "https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico",
         height: 976,
         highlighted: false,
         id: 356,
@@ -90,7 +90,7 @@ export function getAllTabs() {
         audible: false,
         autoDiscardable: true,
         discarded: false,
-        favIconUrl: "https://static.xx.fbcdn.net/rsrc.php/yl/r/H3nktOa7ZMg.ico",
+        favIconUrl: "https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico",
         height: 976,
         highlighted: false,
         id: 366,
@@ -108,21 +108,21 @@ export function getAllTabs() {
         windowId: windowId
     }];
 
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, _) {
         resolve(tabMock);
     });
 }
 
-export function selectTab({tab}) {
-    return new Promise(function (resolve, reject) {
+export function selectTab(tab) {
+    return new Promise(function (resolve, _) {
         console.log("Tab selected:" + tab.title);
         resolve();
     });
 }
 
-export function getCurrentWindow() {
-    return new Promise(function (resolve, reject) {
-        console.log("Got the current window");
-        resolve({id: windowId});
+export function focusOnWindow() {
+    return new Promise(function (resolve, _) {
+        console.log("Focused on the window");
+        resolve();
     });
 }
