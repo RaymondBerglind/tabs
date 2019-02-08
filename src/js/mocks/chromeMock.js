@@ -126,3 +126,9 @@ export function getCurrentWindow() {
         resolve({id: windowId});
     });
 }
+
+export function focusOnWindow(windowId) {
+    return new Promise(function (resolve, reject) {
+        resolve();
+    })
+}

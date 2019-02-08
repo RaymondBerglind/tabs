@@ -90,5 +90,6 @@ export function searchKeyMatchesTopResult(state) {
 export function receiveSearchInput(state, searchInput) {
     state.userInput.searchKey = searchInput;
     state.tabsToDisplay = searchAmongTabs(state, state.userInput.searchKey);
+    state.userInput.highlightedTabIndex = 0;
     return state;
 }
