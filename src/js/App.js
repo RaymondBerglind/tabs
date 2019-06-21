@@ -50,15 +50,15 @@ export default class App extends React.Component {
 		if (event.name === 'searchInputWasChanged') {
 			this.setState(prevState => core.receiveSearchInput(prevState, event.data.searchInput));
 		} else if (event.name === 'tabWasHighlighted') {
-			console.log('Tab was highlighted');
 			this.highlightTabItem(this.state, event.data.tab);
 		} else if (event.name === 'clearHighlightedTabItem') {
 			this.clearHighlightedTabItem();
 		} else if (event.name === 'tabWasSelected') {
 			if (event.data.tab) {
-				chromeUtil.selectTab(event.data.tab).then(
-					function() {
-						chromeUtil.focusOnWindow(event.data.tab.windowId);
+				chromeUtil.selectTab(event.data.tab).then(() => {
+						chromeUtil.focusOnWindow(event.data.tab.windowId).then(() => {
+							window.close(); // "Globally" close the extension pop-up.
+						});
 					}
 				)
 			}
